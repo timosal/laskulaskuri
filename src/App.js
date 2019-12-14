@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import Table from './Table';
 import Form from './Form';
+import Calculator from './Calculator';
 
 class App extends Component {
     state = {
-        characters: []
+        characters: [],
+        bills: 0
     };
 
     removeCharacter = index => {
@@ -17,9 +19,14 @@ class App extends Component {
         });
     }
 
+    IncrementBillAmount = () => {
+        this.setState({bills: this.state.bills + 1});
+    }
+   
     handleSubmit = character => {
         this.setState({characters: [...this.state.characters, character]});
     }
+
 
     render() {
         const { characters } = this.state;
@@ -34,6 +41,12 @@ class App extends Component {
                 />
                 <h3>Add New Bill</h3>
                 <Form handleSubmit={this.handleSubmit} />
+                <h3>Who 😎 owes Who 💰 </h3>
+                <Calculator
+                    characterData={characters}
+                    removeCharacter={this.removeCharacter}
+                />
+               
             </div>
         );
     }

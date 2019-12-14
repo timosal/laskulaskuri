@@ -7,7 +7,8 @@ class Form extends Component {
         this.initialState = {
             company: '',
             paydate: '',
-            amount: ''
+            amount: '',
+            payer: ''
         };
 
         this.state = this.initialState;
@@ -29,7 +30,7 @@ class Form extends Component {
     }
 
     render() {
-        const { company, paydate, amount } = this.state; 
+        const { company, paydate, amount, payer } = this.state; 
 
         return (
             <form onSubmit={this.onFormSubmit}>
@@ -51,6 +52,12 @@ class Form extends Component {
                     name="amount" 
                     value={amount} 
                     onChange={this.handleChange} />
+                <label>Payer</label>
+                <input 
+                    type="text" 
+                    name="payer" 
+                    value={payer} 
+                    onChange={this.handleChange} />    
                     
                 <button type="submit">
                     Submit
